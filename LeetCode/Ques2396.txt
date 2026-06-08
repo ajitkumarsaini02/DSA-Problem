@@ -1,0 +1,35 @@
+class Solution {
+public:
+    vector<int> binary(int n, int base){
+        vector<int> ans;
+        while(n>0){
+            ans.push_back(n % base);
+            n /= base;
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+
+    bool isPali(vector<int> &ans, int i, int j){
+        while(i <= j){
+            if(ans[i] != ans[j]){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+
+    bool isStrictlyPalindromic(int n) {
+        vector<int> ans;
+        
+        for(int i=2;i<=n-2;i++){
+            ans = binary(n, i);
+            if(!isPali(ans, 0, ans.size()-1)){
+                return false;
+            }
+        }
+        return true;
+    }
+};

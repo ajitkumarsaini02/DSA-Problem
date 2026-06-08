@@ -1,0 +1,13 @@
+class Solution {
+public:
+static bool cmp(int x, int y){
+    if(x>y)
+    return true;
+    else
+    return false;
+}
+    int findKthLargest(vector<int>& nums, int k) {
+     sort(nums.begin(), nums.end(), cmp);
+     return nums[k-1];
+    }
+};

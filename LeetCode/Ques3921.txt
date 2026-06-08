@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> scoreValidator(vector<string>& events) {
+        int total = 0;
+        int count = 0;
+        for(string &e : events){
+            if(count == 10) break;
+            if(e == "W"){
+                count++;
+            }
+            else if(e == "WD" || e == "NB"){
+                total += 1;
+            }
+            else{
+                total += stoi(e);
+            }
+        }
+        return {total, count};
+    }
+};

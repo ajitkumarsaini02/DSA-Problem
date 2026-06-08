@@ -1,0 +1,20 @@
+class Solution {
+public:
+static bool cmp(vector<int> p, vector<int> q){
+    double d1= sqrt(p[0]*p[0]+p[1]*p[1]);
+    double d2= sqrt(q[0]*q[0]+q[1]*q[1]);
+    if(d1<d2)
+     return true;
+    else
+     return false; 
+}
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+       sort(points.begin(), points.end(), cmp); 
+
+    vector<vector<int>> ans;
+    for(int i=0;i<k; i++){
+        ans.push_back(points[i]);
+    }   
+    return ans;
+    }
+};
