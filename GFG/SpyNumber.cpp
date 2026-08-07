@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    bool checkSpy(int n) {
+        // code here
+        int sum = 0;
+        int prod = 1;
+        while(n > 0){
+            int d = n % 10;
+            sum += d;
+            prod *= d;
+            n /= 10;
+        }
+        return sum == prod;
+    }
+};
+
+
+int main() {
+    return 0;
+}

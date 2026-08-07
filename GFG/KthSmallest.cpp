@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int kthSmallest(vector<int> &arr, int k) {
+        // code here
+        sort(arr.begin(), arr.end());
+        
+        return arr[k-1];
+    }
+};
+
+//other solution
+
+class Solution {
+  public:
+    int kthSmallest(vector<int>& arr, int k) {
+        int mx = *max_element(arr.begin(), arr.end());
+        vector<int> freq(mx + 1, 0);
+    
+        for (int x : arr) freq[x]++;
+    
+        for (int i = 0; i <= mx; i++) {
+            k -= freq[i];
+            if (k <= 0) return i;
+        }
+        return -1;
+    }
+};
+
+int main() {
+    return 0;
+}
