@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) {
+        vector<string> a;
+        for(int n : nums){
+            a.push_back(to_string(n));
+        }
+        int n = a.size();
+        for(int i=0;i<n-1;i++){
+            for(int j=0;j<n-i-1;j++){
+                if(a[j]+a[j+1] < a[j+1]+a[j]){
+                    swap(a[j], a[j+1]);
+                }
+            }
+        }
+        if(a[0] == "0") return "0";
+        string ans = "";
+        for(string s : a){
+            ans += s;
+        }
+        return ans;
+    }
+};
