@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+
+// User function template for C++
+
+class Solution {
+  public:
+    vector<vector<int>> getPairs(vector<int>& arr) {
+        // code here
+        sort(arr.begin(), arr.end());
+        vector<vector<int>> ans;
+        int n = arr.size();
+        int i = 0;
+        int j = n - 1;
+        while(i < j){
+            int sum = arr[i] + arr[j];
+            if(sum == 0){
+                ans.push_back({arr[i], arr[j]});
+                i++;
+                j--;
+                
+                while(i < j && arr[i] == arr[i-1]) i++;
+                while(i < j && arr[j] == arr[j+1]) j--;
+            }
+            else if(sum < 0){
+                i++;
+            }
+            else{
+                j--;
+            }
+        }
+        return ans;
+    }
+};

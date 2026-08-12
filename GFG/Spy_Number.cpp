@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+
+class Solution {
+  public:
+    bool checkSpy(int n) {
+        // code here
+        int sum = 0;
+        int prod = 1;
+        while(n > 0){
+            int d = n % 10;
+            sum += d;
+            prod *= d;
+            n /= 10;
+        }
+        return sum == prod;
+    }
+};

@@ -1,0 +1,22 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+  public:
+    bool isPower(int x, int y) {
+        // code here
+        if(y == 1) return true;
+        if(x == 1) return (y == 1);
+        while(y % x == 0){
+            y /= x;
+        }
+        return y == 1;
+    }
+};
+

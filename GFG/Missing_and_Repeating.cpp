@@ -1,0 +1,34 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+  public:
+    vector<int> findTwoElement(vector<int>& arr) {
+        // code here
+        int n = arr.size();
+        int repeat = -1;
+        int miss = 0;
+        for(int i=0;i<arr.size();i++){
+            int idx = abs(arr[i]) - 1;
+            if(arr[idx] < 0){
+                repeat = abs(arr[i]);
+            }
+            else{
+                arr[idx] = -arr[idx];
+            }
+        }
+        for(int i=0;i<arr.size();i++){
+            if(arr[i] > 0){
+                miss = i+1;
+                break;
+            }
+        }
+        return {repeat, miss};
+    }
+};

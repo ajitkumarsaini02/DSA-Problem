@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <stack>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+
+class Solution {
+  public:
+    string removeConsecutiveCharacter(string& s) {
+        // code here.
+        stack<char> st;
+        st.push(s[0]);
+        for(int i=1;i<s.length();i++){
+            if(st.top() != s[i]) st.push(s[i]);
+        }
+        s = "";
+        while(st.size() > 0){
+            s += st.top();
+            st.pop();
+        }
+        reverse(s.begin(), s.end());
+        return s;
+    }
+};
