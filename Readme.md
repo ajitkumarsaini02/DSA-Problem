@@ -8,6 +8,7 @@ It reflects my consistent practice, problem-solving approach, and understanding 
 ## 🚀 Platforms Covered
 
 * 🔹 Codeforces
+* 🔹 CSES
 * 🔹 LeetCode
 * 🔹 GeeksforGeeks (GFG)
 
@@ -19,6 +20,7 @@ It reflects my consistent practice, problem-solving approach, and understanding 
 DSA-Problem/
 │
 ├── CodeForce/
+├── CSES/
 ├── GFG/
 ├── LeetCode/
 ```
@@ -39,7 +41,6 @@ Each folder contains problems categorized platform-wise for better organization.
 ## 🛠️ Languages Used
 
 * C++ (Primary)
-* (Add more if you use later)
 
 ---
 
