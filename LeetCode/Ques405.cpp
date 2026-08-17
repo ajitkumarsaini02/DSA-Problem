@@ -1,0 +1,23 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    string toHex(int num) {
+        if(num==0) return "0";
+        char dat[]={'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
+        string hex="";
+        unsigned int n=num;
+        while(n>0){
+            hex=dat[n%16]+hex;
+            n/=16;
+        }
+        return hex;
+    }
+};

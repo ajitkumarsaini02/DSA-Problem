@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int thirdMax(vector<int>& nums) {
+        long long f=LLONG_MIN, s=LLONG_MIN , t=LLONG_MIN;
+        for(int n : nums){
+            if(n!=f && n!=s && n!=t){
+                if(n>f){
+                    t=s;
+                    s=f;
+                    f=n;
+                }
+                else if(n>s){
+                    t=s;
+                    s=n;
+                }
+                else if(n>t){
+                    t=n;
+                }
+            }
+        }
+        if(t==LLONG_MIN){
+            return f;
+        }
+        return t;
+    }
+};

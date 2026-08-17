@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        
+        bool upper = true;
+        for(char ch : word){
+            if(!isupper(ch)){
+                upper = false;
+                break;
+            }
+        }
+
+        bool lower = true;
+        for(char ch : word){
+            if(!islower(ch)){
+                lower = false;
+                break;
+            }
+        }
+
+        bool first = isupper(word[0]);
+        bool rest = true;
+
+        for(int i=1;i<word.size();i++){
+            if(!islower(word[i])){
+                rest = false;
+                break;
+            }
+        }
+
+        return upper || lower || (first && rest);
+    }
+};
