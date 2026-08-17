@@ -1,0 +1,60 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    vector<string> split(string s){
+        vector<string> words;
+        string temp = "";
+        for(char c : s){
+            if(c == ' '){
+                if(!temp.empty()){
+                    words.push_back(temp);
+                    temp = "";
+                }
+            }
+            else{
+                temp += c;
+            }
+        }
+        if (!temp.empty()) words.push_back(temp);
+        return words;
+    }
+
+    bool wordPattern(string p, string s) {
+        vector<string> words = split(s);
+        if(words.empty()) return false;
+        if(p.size() != words.size()) return false;
+        vector<char> pat;
+        vector<string> map;
+        
+        for(int i=0;i<p.size();i++){
+            char ch = p[i];
+            string w = words[i];
+            bool found = false;
+            for(int j=0;j<pat.size();j++){
+                if(pat[j] == ch){
+                    if(map[j] != w) return false;
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                for(int j=0;j<map.size();j++){
+                    if(map[j] == w){
+                        return false;
+                    }
+                }
+                pat.push_back(ch);
+                map.push_back(w);
+            }
+        }
+        return true;
+    }
+};
