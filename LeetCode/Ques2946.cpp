@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    bool areSimilar(vector<vector<int>>& mat, int k) {
+        vector<vector<int>>ans = mat;
+        int n = mat[0].size();
+        for(int a=0;a<k%n;a++){
+            for(int i=0;i<mat.size();i++){
+                if(i % 2 == 0){
+                    for(int j=0;j<mat[i].size()-1;j++){
+                        swap(mat[i][j], mat[i][j+1]);
+                    }
+                }
+                else{
+                    for(int j=mat[i].size()-1;j>0;j--){
+                        swap(mat[i][j], mat[i][j-1]);
+                    }
+                }
+            }
+        }
+        return mat == ans;
+    }
+};

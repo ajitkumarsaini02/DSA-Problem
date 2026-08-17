@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    long long countCommas(long long n) {
+        long long count = 0;
+        long long s = 1000;
+        int c = 1;
+        while (s <= n) {
+            long long e = s * 1000 - 1;
+            if (e > n) {
+                e = n;
+            }
+            count += (e - s + 1) * c;
+            s *= 1000;
+            c++;
+        }
+        return count;
+    }
+};

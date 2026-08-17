@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    string maximumXor(string s, string t) {
+        string temp = t;
+        int cnt0 = 0, cnt1 = 0;
+        for(int i=0;i<s.size();i++){
+            if(t[i] == '0') cnt0++;
+            else cnt1++;
+        }
+        string ans = "";
+        for(int i=0;i<s.size();i++){
+            if(s[i] == '0'){
+                if(cnt1 > 0){
+                    ans += '1';
+                    cnt1--;
+                }
+                else{
+                    ans += '0';
+                    cnt0--;
+                    
+                }
+            }
+            else{
+                if(cnt0 > 0){
+                    ans += '1';
+                    cnt0--;
+                }
+                else{
+                    ans += '0';
+                    cnt1--;
+                    
+                }
+            }
+        }
+        return ans;
+    }
+};

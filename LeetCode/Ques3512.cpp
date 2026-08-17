@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int minOperations(vector<int>& nums, int k) {
+        int sum=0;
+        int count=0;
+        for(int i=0;i<nums.size();i++){
+            sum=sum+nums[i];
+            if (sum%k==0){
+                return count;
+            }
+            else{
+                nums[i]=nums[i]-1;
+                count++;
+            } 
+        }
+        return count;
+    }
+};

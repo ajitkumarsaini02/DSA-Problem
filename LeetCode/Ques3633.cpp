@@ -1,0 +1,59 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int solve(vector<int>& start1, vector<int>& duration1, vector<int>& start2, vector<int>& duration2){
+        int finish1 = INT_MAX;
+        for(int i=0;i<start1.size();i++){
+            finish1 = min(finish1, start1[i] + duration1[i]);
+        }
+
+        int finish2 = INT_MAX;
+        for(int i=0;i<start2.size();i++){
+            finish2 = min(finish2, max(finish1, start2[i]) + duration2[i]);
+        }
+        return finish2;
+    }
+
+
+    int earliestFinishTime(vector<int>& landStartTime, vector<int>& landDuration, vector<int>& waterStartTime, vector<int>& waterDuration) {
+        int landFinish = solve(landStartTime, landDuration, waterStartTime, waterDuration);
+
+        int waterFinish = solve(waterStartTime, waterDuration, landStartTime, landDuration);
+        
+        return min(landFinish, waterFinish);
+    }
+};
+
+
+
+
+class Solution {
+public:
+    int earliestFinishTime(vector<int>& landStartTime, vector<int>& landDuration, vector<int>& waterStartTime, vector<int>& waterDuration) {
+        int ans = INT_MAX;
+
+        for(int i=0;i<landStartTime.size();i++){
+            for(int j=0;j<waterStartTime.size();j++){
+
+                int fLand = landStartTime[i] + landDuration[i];
+                int sWater = max(fLand, waterStartTime[j]);
+                int finish1 = sWater + waterDuration[j];
+
+                int fWater = waterStartTime[j] + waterDuration[j];
+                int sLand = max(fWater, landStartTime[i]);
+                int finish2 = sLand + landDuration[i];
+
+                ans = min({ans, finish1, finish2});
+            }
+        }
+        return ans;
+    }
+};

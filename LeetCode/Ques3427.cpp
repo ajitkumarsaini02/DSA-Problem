@@ -1,0 +1,26 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int subarraySum(vector<int>& nums) {
+        int n = nums.size();
+        vector<long long> prefix(n+1,0);
+        for(int i=0;i<n;i++){
+            prefix[i+1] = prefix[i] + nums[i];
+        }
+        long long total = 0;
+        for(int i=0;i<n;i++){
+            int s = max(0, i - nums[i]);
+            total += prefix[i+1] - prefix[s];
+        }
+
+        return (int)total;
+    }
+};

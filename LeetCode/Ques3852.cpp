@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    vector<int> minDistinctFreqPair(vector<int>& nums) {
+        int mx = *max_element(nums.begin(), nums.end());
+        vector<int>freq(mx+1,0);
+        int n = nums.size();
+        for(int i=0;i<n;i++){
+            freq[nums[i]]++;
+        }
+        for(int i=0;i<=mx;i++){
+            if(freq[i]==0) continue;
+            for(int j=i+1;j<=mx;j++){
+                if(freq[j]==0) continue;
+                if(freq[i]!=freq[j]){
+                    return {i,j};
+                }
+            }
+        }
+        return {-1,-1};
+    }
+};

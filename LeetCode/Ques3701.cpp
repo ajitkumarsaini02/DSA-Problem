@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int alternatingSum(vector<int>& nums) {
+        int even=0;
+        int odd=0;
+        for(int i=0;i<nums.size();i++){
+            if(i%2!=0){
+                odd+=nums[i];
+            }
+            else{
+                even+=nums[i];
+            }
+        }
+        return even-odd;
+    }
+};
