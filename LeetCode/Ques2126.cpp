@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    bool asteroidsDestroyed(int mass, vector<int>& a) {
+        sort(a.begin(), a.end());
+        long long m = mass;
+        for(int i=0;i<a.size();i++){
+            if(m >= a[i]){
+                m += a[i];
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
+};

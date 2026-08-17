@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    vector<int> intersection(vector<vector<int>>& nums) {
+        int n=nums.size();
+        vector<int> freq(1001, 0);
+        for(int i=0;i<n;i++){
+            for(int n : nums[i]){
+                freq[n]++;
+            }
+        }
+        vector<int> ans;
+        for(int i=1;i<freq.size();i++){
+            if(freq[i] == n){
+                ans.push_back(i);
+            }
+        }
+        return ans;
+    }
+};

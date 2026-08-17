@@ -1,0 +1,23 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int maximumCount(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        int pos = 0;
+        int neg = 0;
+        for(int i=0;i<n;i++){
+            if(nums[i]<0) neg++;
+            else if(nums[i]>0) pos++;
+        }
+        return max(neg, pos);
+    }
+};

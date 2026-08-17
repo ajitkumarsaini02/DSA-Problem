@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int digit(int n){
+        int dit = 0;
+        while(n > 0){
+            dit += (n % 10);
+            n /= 10;
+        }
+        return dit;
+    }
+    int countEven(int num) {
+        int count = 0;
+        for(int i=1;i<=num;i++){
+            if(digit(i) % 2 == 0){
+                count++;
+            }
+        }
+        return count;
+    }
+};

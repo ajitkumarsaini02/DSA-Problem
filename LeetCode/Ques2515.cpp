@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int closestTarget(vector<string>& words, string target, int s) {
+        int n = words.size();
+        int mn = INT_MAX;
+        for(int i=0;i<n;i++){
+            if(words[i] == target ){
+                int dist = abs(i-s);
+                dist = min(dist, n - dist);
+                mn = min(mn, dist);
+            }
+        }
+
+        if(mn == INT_MAX){
+            return -1;
+        }
+        else{
+            return mn;
+        }
+    }
+};
