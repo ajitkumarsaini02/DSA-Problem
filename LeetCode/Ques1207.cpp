@@ -1,0 +1,54 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        int n = arr.size();
+        unordered_map<int, int> mp;
+        
+        for(int i=0;i<n;i++){
+            mp[arr[i]]++;
+        }
+        unordered_set<int> st;
+        for(auto x : mp){
+            if(st.count(x.second)){
+                return false;
+            }
+            st.insert(x.second);
+        }
+        return true;
+    }
+};
+
+
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        int n = arr.size();
+        int mx = *max_element(arr.begin(), arr.end());
+        int mn = *min_element(arr.begin(), arr.end());
+        int size = mx - mn + 1;
+
+        vector<int> freq(size, 0);
+        for(int i=0;i<n;i++){
+            freq[arr[i] - mn]++;
+        }
+
+        for(int i=0;i<freq.size();i++){
+            if(freq[i] == 0) continue;
+            for(int j=i+1;j<freq.size();j++){
+                if(freq[i] == freq[j] && freq[j] != 0){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+};

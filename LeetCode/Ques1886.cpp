@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    bool findRotation(vector<vector<int>>& m, vector<vector<int>>& t) {
+        for(int k=0; k<4; k++){
+            if(m == t) return true;
+            for(int i=0; i<m.size(); i++){
+                for(int j=i+1; j<m.size();j++){
+                    swap(m[i][j], m[j][i]);
+                }                }
+            for(int i=0;i<m.size();i++){
+                reverse(m[i].begin(), m[i].end());
+            }
+        }
+        return false; 
+    }
+};

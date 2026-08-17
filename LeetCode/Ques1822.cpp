@@ -1,0 +1,20 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int arraySign(vector<int>& nums) {
+        int mul=1;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==0) return 0;
+            mul*=(nums[i]>0)?1:-1;
+        }
+        return mul;
+    }
+};

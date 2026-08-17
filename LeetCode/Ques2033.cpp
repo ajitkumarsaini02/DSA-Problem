@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int minOperations(vector<vector<int>>& grid, int x) {
+        int n = grid.size();
+        int count = 0;
+        vector<int> v;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<grid[0].size();j++){
+                v.push_back(grid[i][j]);
+            }
+        }
+        sort(v.begin(), v.end());
+
+        int rem = v[0] % x;
+        for(int a : v){
+            if(a % x != rem){
+                return -1;
+            }
+        }
+        int med = v[v.size()/2];
+
+        for(int i=0;i<v.size();i++){
+            count += abs(v[i] - med) / x;
+        }
+        return count;
+    }
+};

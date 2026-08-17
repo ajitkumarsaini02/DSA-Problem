@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int maxCoins(vector<int>& piles) {
+        sort(piles.begin(), piles.end());
+        int n = piles.size();
+        int ans = 0;
+        int i = n-2;
+        int turns = n /3;
+        while(turns--){
+            ans += piles[i];
+            i -= 2;
+        }
+        return ans;
+    }
+};
+
+
+
+class Solution {
+public:
+    int maxCoins(vector<int>& piles) {
+        sort(piles.rbegin(), piles.rend());
+        int n = piles.size();
+        int ans = 0;
+        int idx = 1;
+        for(int i=0;i<n/3;i++){
+            ans += piles[idx];
+            idx += 2;
+        }
+        return ans;
+    }
+};
