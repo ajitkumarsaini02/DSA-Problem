@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int bitwiseComplement(int n) {
+        if(n == 0) return 1;
+        int t = n;
+        string s = "";
+        while(n>0){
+            int a = n % 2;
+            s += to_string(a);
+            n /= 2;
+        }
+        string ans = "";
+        for(int i=0;i<s.size();i++){
+            if(s[i] == '0'){
+                ans += '1';
+            }
+            else{
+                ans += '0';
+            }
+        }
+        int res = 0;
+        for(int i=0;i<ans.size();i++){
+            if(ans[i] == '1'){
+                res += pow(2, i);
+            }
+        }
+        return res;
+    }
+};

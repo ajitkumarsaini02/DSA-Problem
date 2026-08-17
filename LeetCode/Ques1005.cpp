@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <queue>
+using namespace std;
+
+int main() {
+    return 0;
+}
+
+class Solution {
+public:
+    int largestSumAfterKNegations(vector<int>& nums, int k) {
+        priority_queue<int, vector<int>, greater<int>> pq(nums.begin(), nums.end());
+        int sum = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            sum += nums[i];
+        }
+
+        while(k--){
+            int ele = pq.top();
+            pq.pop();
+            if(ele == 0) break;
+
+            pq.push(-1 * ele);
+            sum -= ele;
+            sum += (-ele);
+        }
+        return sum;
+    }
+};
